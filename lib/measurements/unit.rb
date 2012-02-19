@@ -4,12 +4,12 @@ module Measurements
     module Unit
         
         # All conversions are loaded from the conversions.yml.
-        #   The conversions.yml file lives in the /lib directory of the project
-        CONVERSIONS = YAML::load(File.open(File.join(File.dirname(__FILE__), '..', 'conversions.yml')))
+        #   The conversions.yml file lives in the /measurements directory of the project
+        CONVERSIONS = YAML::load(File.open(File.join(File.dirname(__FILE__), 'config', 'conversions.yml')))
         
         # All abbreviations are loaded from the abbreviations.yml.
-        #   The abbreviations.yml file lives in the /lib directory of the project
-        ABBREVIATIONS = YAML::load(File.open(File.join(File.dirname(__FILE__), '..', 'abbreviations.yml')))
+        #   The abbreviations.yml file lives in the /measurements/config directory of the project
+        ABBREVIATIONS = YAML::load(File.open(File.join(File.dirname(__FILE__), 'config', 'abbreviations.yml')))
         
         autoload :BaseUnit,   'measurements/unit/baseunit'
         autoload :Ounce,      'measurements/unit/ounce'
