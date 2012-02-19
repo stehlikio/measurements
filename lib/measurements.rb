@@ -1,3 +1,6 @@
+# Always make the version available
+require 'measurements/version'
+
 # @author Casey Stehlik
 module Measurements
     
