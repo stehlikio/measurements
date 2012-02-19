@@ -62,6 +62,14 @@ module Measurements
                 end
             end
             
+            # Convert the current unit into a new unit of highest bestfit unit that
+            #   would make sense while measuring something. An example would be that a better way
+            #   to display 6 tsps would be 2 tbsps.
+            # @return [BaseUnit] the new unit, it will be the unit that is the bestfit conversion.
+            def smart_convert
+                #TODO
+            end
+            
             private
             
             # Validate if a conversion will be valid. A conversion will be valid if one
