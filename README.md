@@ -34,5 +34,21 @@ Get the list of available types of units. ex: Solid, Fluid or Neutral
 
 	Measurements.available_types
 	
+## Getting Started with Developing
+Make sure you have rubygems installed. You can find instructions at [rubygems.org](http://docs.rubygems.org/read/chapter/3)
+
+Have bundler installed on your system
+
+	gem install bundler
+	
+Run bundler to make sure you have all the right gems
+
+	bundle install
+	
+Generate some docs to browse while I work on getting some tests ready. After running the following command
+browse to the doc directory and open the index.html file in your favorite browser.
+
+	yardoc
+	
 ## Copyright
 Copyright (c) 2012 Casey Stehlik.
