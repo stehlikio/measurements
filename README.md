@@ -46,7 +46,7 @@ Get the list of available types of units. ex: Solid, Fluid or Neutral
 Measurements.available_types
 ```
 	
-## Getting Started with Developing
+## Getting Started with Development
 Make sure you have rubygems installed. You can find instructions at [rubygems.org](http://docs.rubygems.org/read/chapter/3)
 
 Have bundler installed on your system
