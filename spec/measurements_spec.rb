@@ -18,4 +18,8 @@ describe Measurements do
         pound = Measurements.new_unit :pound, 4
         pound.class.should == Measurements::Unit::Pound && pound.quantity.should == 4
     end
+
+    it "should raise an error if the unit requested has not been implemented" do
+        expect{ Measurements.new_unit(:unimplemented_unit, 2) }.should raise_error()
+    end
 end
