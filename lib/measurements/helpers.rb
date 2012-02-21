@@ -19,6 +19,11 @@ module Measurements
     # @param [Symbol] type optional unit type such as :solid or :fluid
     # @return [BaseUnit] a new unit instance of class = klass
     def new_unit(klass, quantity, type = nil)
+        if available_units.include? klass
+            eval('Measurements::Unit::' + klass.to_s.capitalize).new quantity, type
+        else
+            raise Measurements::Exception::NoUnitError, "The unit requested does not exist."
+        end
     end
 
     module_function :new_unit
