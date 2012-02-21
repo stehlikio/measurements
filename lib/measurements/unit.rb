@@ -23,7 +23,9 @@ module Measurements
         #   it's a more obvious method to use instead of diving down to the Unit module.
         # @return [Array] an Array of currently implemented units
         def available_units
-            self.constants.reject{|unit| unit.eql?(:BaseUnit) || unit.eql?(:CONVERSIONS)}.map{|unit| unit.to_s.downcase.to_sym}
+            self.constants.reject{|unit| unit.eql?(:BaseUnit) || 
+                                         unit.eql?(:CONVERSIONS) || 
+                                         unit.eql?(:ABBREVIATIONS)}.map{|unit| unit.to_s.downcase.to_sym}
         end
         
         module_function :available_units
