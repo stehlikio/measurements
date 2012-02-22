@@ -55,7 +55,7 @@ module Measurements
                 type = type.to_s
                 current_type = self.unit
                 if validate_conversion(current_type, type)
-                    base = convert_to_base(self)
+                    base = convert_to_base(self, type)
                     return convert_to_type(base, type)
                 else
                     raise Measurements::Exception::InvalidConversionError, "A conversion must be from the same type or neutral."
@@ -72,6 +72,13 @@ module Measurements
             
             private
             
+            # Get the unit type of the class passed in as a string
+            # @param [String] type the class name as a string
+            # @return [String] the unit type of the class that was passed in.
+            def unit_type_from_type(type)
+                eval("Measurements::Unit::" + type.capitalize + "::UNIT_TYPE")
+            end
+
             # Validate if a conversion will be valid. A conversion will be valid if one
             #   of the units types are neutral or if the unit types are the same.
             # @param [String] from the unit type to convert from
@@ -80,8 +87,8 @@ module Measurements
             # @raise [NoUnitError] gets raised if the from or to units could not be found
             def validate_conversion(from, to)
                 begin
-                    from = eval("Measurements::Unit::" + from.capitalize + "::UNIT_TYPE")
-                    to = eval("Measurements::Unit::" + to.capitalize + "::UNIT_TYPE")
+                    from = unit_type_from_type from
+                    to = unit_type_from_type to
                 rescue
                     raise Measurements::Exception::NoUnitError, "The unit you're trying to convert to does not exist."
                 end
@@ -91,9 +98,10 @@ module Measurements
             # Convert the current unit into the base unit for its type.
             # @param [BaseUnit] current the unit to be converted, it should be a subclass of [BaseUnit]
             # @return [BaseUnit] the base unit.
-            def convert_to_base(current)
+            def convert_to_base(current, type)
+                unit_type = unit_type_from_type type
                 measurement_list = Measurements::Unit::CONVERSIONS["conversions"][current.unit_system][current.unit_type]
-                quantity_to_mst = measurement_list[current.unit]
+                quantity_to_mst = measurement_list[current.unit].to_f != 0.0 ? measurement_list[current.unit] : 1.0
                 base_type = measurement_list["base"]
                 
                 eval("Measurements::Unit::" + base_type.capitalize).new(current.quantity / quantity_to_mst, current.type)
