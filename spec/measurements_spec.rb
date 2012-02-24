@@ -23,7 +23,7 @@ describe Measurements do
         expect{ Measurements.new_unit(:unimplemented_unit, 2) }.should raise_error()
     end
 
-    it "should covert 1 quart to 4 cups" do
+    it "should convert 1 quart to 4 cups" do
         quart = Measurements.new_unit :quart, 1
         cup = quart.convert_to :cup
         cup.quantity.should == 4
