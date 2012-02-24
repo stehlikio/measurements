@@ -53,8 +53,7 @@ module Measurements
             # @raise [InvalidConversionError] gets raised if the type of conversion is not valid.
             def convert_to(type)
                 type = type.to_s
-                current_type = self.unit
-                if validate_conversion(current_type, type)
+                if validate_conversion(type)
                     base = convert_to_base(self, type)
                     return convert_to_type(base, type)
                 else
@@ -81,18 +80,20 @@ module Measurements
 
             # Validate if a conversion will be valid. A conversion will be valid if one
             #   of the units types are neutral or if the unit types are the same.
-            # @param [String] from the unit type to convert from
             # @param [String] to the unit type to convert to
             # @return [Boolean] True if the conversion is valid.
             # @raise [NoUnitError] gets raised if the from or to units could not be found
-            def validate_conversion(from, to)
+            def validate_conversion(to)
+                from = self.unit
+                
                 begin
                     from = unit_type_from_type from
                     to = unit_type_from_type to
                 rescue
                     raise Measurements::Exception::NoUnitError, "The unit you're trying to convert to does not exist."
                 end
-                from.eql?("neutral") || to.eql?("neutral") || from.eql?(to)
+                
+                (from.eql?("neutral") || to.eql?("neutral") || from.eql?(to)) && (self.type.nil? || self.type.eql?("neutral") || self.type.eql?(to))
             end
             
             # Convert the current unit into the base unit for its type.
@@ -100,10 +101,16 @@ module Measurements
             # @return [BaseUnit] the base unit.
             def convert_to_base(current, type)
                 unit_type = unit_type_from_type type
-                measurement_list = Measurements::Unit::CONVERSIONS["conversions"][current.unit_system][current.unit_type]
+                
+                if !unit_type.eql? "neutral"
+                    measurement_list = Measurements::Unit::CONVERSIONS["conversions"][current.unit_system][unit_type]
+                else
+                    measurement_list = Measurements::Unit::CONVERSIONS["conversions"][current.unit_system][current.unit_type]
+                end
+                
                 quantity_to_mst = measurement_list[current.unit].to_f != 0.0 ? measurement_list[current.unit] : 1.0
                 base_type = measurement_list["base"]
-                
+
                 eval("Measurements::Unit::" + base_type.capitalize).new(current.quantity / quantity_to_mst, current.type)
             end
             
