@@ -44,12 +44,14 @@ Get the list of available units
 
 ```ruby
 Measurements.available_units
+=> [:ounce, :pound, :teaspoon, :tablespoon, :cup, :pint, :quart, :gallon, :inch, :foot, :yard, :furlong, :chain, :mile, :thou, :league]
 ```
 	
 Get the list of available types of units. ex: Solid, Fluid or Neutral
 
 ```ruby
 Measurements.available_types
+=> [:solid, :fluid, :neutral, :base] 
 ```
 	
 ## Getting Started with Development
