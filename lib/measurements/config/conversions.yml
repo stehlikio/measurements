@@ -3,6 +3,9 @@ conversions:
     solid:
       base: pound
       cup: 2
+      ounce: 16
+      teaspoon: 96
+      tablespoon: 32
     
     fluid:
       base: gallon
