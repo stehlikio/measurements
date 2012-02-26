@@ -63,4 +63,16 @@ describe Measurements do
         cup = Measurements.new_unit :gallon, 2
         expect { cup.type = :solid }.should raise_error()
     end
+    
+    it "should convert 2 feet to 24 inches" do
+        feet = Measurements.new_unit :foot, 2
+        inches = feet.convert_to :inch
+        inches.quantity.should == 24
+    end
+    
+    it "should convert 30 inches to 1.5 feet" do
+        inches = Measurements.new_unit :inch, 30
+        feet = inches.convert_to :foot
+        feet.quantity.should == 2.5
+    end
 end
