@@ -1,13 +1,13 @@
 module Measurements
     module Unit
         
-        # The implementation of a cup. A cup is a neutral unit that belongs to the cooking unit 
+        # The implementation of a quart. A quart is a fluid unit that belongs to the cooking unit 
         #   system.
-        class Cup
+        class Quart
             include BaseUnit
             
             # Type for the Cup unit
-            UNIT_TYPE = Measurements::Type::NEUTRAL
+            UNIT_TYPE = Measurements::Type::FLUID
             
             # System type for the Cup unit
             UNIT_SYSTEM = Measurements::System::COOK

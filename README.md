@@ -21,6 +21,12 @@ Create an Ounce object with a quantity of 3oz
 ounce = Measurements::Unit::Ounce.new 3
 ```
 
+**Notice:** You can now use the new helper method you create a unit instead of the way shown above
+
+```ruby
+ounce = Measurements.new_unit :ounce, 3
+```
+
 Convert that 3oz object to a Pound object
 
 ```ruby
@@ -46,7 +52,7 @@ Get the list of available types of units. ex: Solid, Fluid or Neutral
 Measurements.available_types
 ```
 	
-## Getting Started with Developing
+## Getting Started with Development
 Make sure you have rubygems installed. You can find instructions at [rubygems.org](http://docs.rubygems.org/read/chapter/3)
 
 Have bundler installed on your system
