@@ -17,6 +17,9 @@ module Measurements
         autoload :Teaspoon,   'measurements/unit/teaspoon'
         autoload :Tablespoon, 'measurements/unit/tablespoon'
         autoload :Cup,        'measurements/unit/cup'
+        autoload :Pint,       'measurements/unit/pint'
+        autoload :Quart,      'measurements/unit/quart'
+        autoload :Gallon,     'measurements/unit/gallon'
                 
         # Helper method to get what units are currently implemented
         # @deprecated Use {Measurements#available_units} instead of this method because
