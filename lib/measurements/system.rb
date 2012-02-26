@@ -5,7 +5,7 @@ module Measurements
         SI = "metric"
         
         # System type for United States units
-        US = "us"
+        IMPERIAL = "imperial"
         
         # System type for cooking units
         COOK = "cooking"
