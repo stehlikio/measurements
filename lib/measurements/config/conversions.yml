@@ -1,14 +1,11 @@
 conversions:
-  
   cooking:
-    
     solid:
       base: pound
       cup: 2
       ounce: 16
       teaspoon: 96
       tablespoon: 32
-    
     fluid:
       base: gallon
       ounce: 128
@@ -17,14 +14,13 @@ conversions:
       quart: 4
       teaspoon: 10
       tablespoon: 10
-      
     neutral:
       base: cup
       ounce: 8
       teaspoon: 48
       tablespoon: 16
-  
   imperial:
     base:
-      base: foot
-      inch: 12
+      base: yard
+      foot: 3
+      inch: 36

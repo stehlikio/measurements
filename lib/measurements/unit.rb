@@ -26,6 +26,7 @@ module Measurements
         # Imperial Units
         autoload :Inch,       'measurements/unit/inch'
         autoload :Foot,       'measurements/unit/foot'
+        autoload :Yard,       'measurements/unit/yard'
                 
         # Helper method to get what units are currently implemented
         # @deprecated Use {Measurements#available_units} instead of this method because
