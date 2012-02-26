@@ -84,4 +84,10 @@ describe Measurements do
     it "should raise an error if you try to set a type manually for imperial units" do
         expect { inch = Measurements.new_unit :inch, 51, :solid }.should raise_error()
     end
+    
+    it "should convert 2.5 leagues to 475200 inches" do
+        leagues = Measurements.new_unit :league, 2.5
+        inches = leagues.convert_to :inch
+        inches.quantity.should == 475200
+    end
 end
