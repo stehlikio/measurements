@@ -1,5 +1,7 @@
 conversions:
+  
   cooking:
+    
     solid:
       base: pound
       cup: 2
@@ -21,3 +23,8 @@ conversions:
       ounce: 8
       teaspoon: 48
       tablespoon: 16
+  
+  imperial:
+    base:
+      base: foot
+      inch: 12
