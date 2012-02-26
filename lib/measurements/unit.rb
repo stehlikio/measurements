@@ -27,6 +27,11 @@ module Measurements
         autoload :Inch,       'measurements/unit/inch'
         autoload :Foot,       'measurements/unit/foot'
         autoload :Yard,       'measurements/unit/yard'
+        autoload :Furlong,    'measurements/unit/furlong'
+        autoload :Chain,      'measurements/unit/chain'
+        autoload :Mile,       'measurements/unit/mile'
+        autoload :Thou,       'measurements/unit/thou'
+        autoload :League,     'measurements/unit/league'
                 
         # Helper method to get what units are currently implemented
         # @deprecated Use {Measurements#available_units} instead of this method because
