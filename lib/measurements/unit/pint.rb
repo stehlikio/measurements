@@ -1,6 +1,8 @@
 module Measurements
     module Unit
         
+        # The implementation of a pint. A pint is a fluid unit that belongs to the cooking unit 
+        #   system.
         class Pint
             include BaseUnit
             

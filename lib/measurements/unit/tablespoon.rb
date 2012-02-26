@@ -1,6 +1,8 @@
 module Measurements
     module Unit
         
+        # The implementation of a teaspoon. A teaspoon is a neutral unit that belongs to the cooking unit 
+        #   system.
         class Tablespoon       
             include BaseUnit
             

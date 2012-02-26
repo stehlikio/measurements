@@ -1,6 +1,8 @@
 module Measurements
     module Unit
         
+        # The implementation of a gallon. A gallon is a fluid unit that belongs to the cooking unit 
+        #   system.
         class Gallon
             include BaseUnit
             

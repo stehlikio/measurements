@@ -1,6 +1,8 @@
 module Measurements
     module Unit
         
+        # The implementation of a pound. A pound is a solid unit that belongs to the cooking unit 
+        #   system.
         class Pound
             include BaseUnit
                         

@@ -1,6 +1,8 @@
 module Measurements
     module Unit
         
+        # The implementation of a quart. A quart is a fluid unit that belongs to the cooking unit 
+        #   system.
         class Quart
             include BaseUnit
             
