@@ -75,4 +75,9 @@ describe Measurements do
         feet = inches.convert_to :foot
         feet.quantity.should == 2.5
     end
+    
+    it "should raise an error if you try to convert a unit across system types" do
+        inches = Measurements.new_unit :inch, 55
+        expect { cup = inches.convert_to :cup }.should raise_error()
+    end
 end
