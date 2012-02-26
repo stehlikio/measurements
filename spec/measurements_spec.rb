@@ -47,7 +47,20 @@ describe Measurements do
     end
     
     it "should raise an error if the unit type is set to fluid and you try to convert to a solid" do
-        cup = Measurements.new_unit :gallon, 1, :fluid
+        cup = Measurements.new_unit :gallon, 1
         expect{ ounce = cup.convert_to(:pound) }.should raise_error()
+    end
+    
+    it "should raise an error if you try to set the unit type of a fluid only unit" do
+        expect{ gallon = Measurements.new_unit :gallon, 1, :fluid }.should raise_error()
+    end
+    
+    it "should raise an error if you try to set the unit type of a solid only unit" do
+        expect{ pound = Measurements.new_unit :pound, 2, :solid }.should raise_error()
+    end
+    
+    it "should raise an error when trying to set the unit type of a unit on the fly" do
+        cup = Measurements.new_unit :gallon, 2
+        expect { cup.type = :solid }.should raise_error()
     end
 end

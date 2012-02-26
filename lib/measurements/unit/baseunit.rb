@@ -9,11 +9,31 @@ module Measurements
             # @attribute [rw]
             # The type of the editable type of the unit. This is
             #   used to limit the conversions from fluid to solid
-            attr_accessor :type
+            #attr_accessor :type
             
             def initialize(quantity, type = nil)
                 @quantity = quantity.to_f
-                @type = type
+                
+                if !type.nil?
+                    self.type = type
+                else
+                    @type = type
+                end
+            end
+            
+            # Set the unit type of a unit manually. A type can only be set for units with the
+            #   unit type of "neutral", any other unit type will raise and error.
+            # @param [String] type the type of unit the unit should be.
+            def type=(type)
+                if self.unit_type.eql? "neutral"
+                    @type = type
+                else
+                    raise Measurements::Exception::InvalidTypeSettingError, "Types can only be set on neutral units."
+                end
+            end
+            
+            def type
+                @type
             end
             
             # @attribute [r]

@@ -5,7 +5,7 @@ module Measurements
             include BaseUnit
                         
             # Type for the Pound unit
-            UNIT_TYPE = Measurements::Type::NEUTRAL
+            UNIT_TYPE = Measurements::Type::SOLID
             
             # System type for the Pound unit
             UNIT_SYSTEM = Measurements::System::COOK
