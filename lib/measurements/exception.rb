@@ -13,5 +13,10 @@ module Measurements
         class InvalidConversionError < StandardError
         end
         
+        # This is an extention of the StandardError and it will be raised when
+        #   you try to set the type of a unit that doesn't allow it.
+        class InvalidTypeSettingError < StandardError
+        end
+        
     end
 end

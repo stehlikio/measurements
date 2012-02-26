@@ -1,6 +1,8 @@
 module Measurements
     module Unit
         
+        # The implementation of a ounce. A ounce is a neutral unit that belongs to the cooking unit 
+        #   system.
         class Ounce
             include BaseUnit
             
