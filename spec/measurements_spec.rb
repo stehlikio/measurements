@@ -80,4 +80,8 @@ describe Measurements do
         inches = Measurements.new_unit :inch, 55
         expect { cup = inches.convert_to :cup }.should raise_error()
     end
+    
+    it "should raise an error if you try to set a type manually for imperial units" do
+        expect { inch = Measurements.new_unit :inch, 51, :solid }.should raise_error()
+    end
 end
