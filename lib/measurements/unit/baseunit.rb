@@ -72,6 +72,12 @@ module Measurements
             # @raise [InvalidConversionError] gets raised if the type of conversion is not valid.
             def convert_to(type)
                 type = type.to_s
+                
+                if validate_system(type)
+                
+                else
+                    raise Measurements::Exception::InvalidConversionError, "A conversion must be from the same system type."
+                end
                 if validate_conversion(type)
                     base = convert_to_base(self, type)
                     return convert_to_type(base, type)
@@ -95,6 +101,31 @@ module Measurements
             # @return [String] the unit type of the class that was passed in.
             def unit_type_from_type(type)
                 eval("Measurements::Unit::" + type.capitalize + "::UNIT_TYPE")
+            end
+            
+            # Get the unit system of the class passed in as a string
+            # @param [String] type the class name as a string
+            # @return [String] the unit system of the class that was passed in.
+            def unit_system_from_type(type)
+                eval("Measurements::Unit::" + type.capitalize + "::UNIT_SYSTEM")
+            end
+            
+            # Validate if the systems of the converting units match. A conversion will only
+            #   be allowed if the two units are from the same unit system.
+            # @param [String] to the unit type to convert to
+            # @return [Boolean] true if the conversion is valid.
+            # @raise [NoUnitError] gets raised if the from or to units could not be found
+            def validate_system(to)
+                from = self.unit
+                
+                begin
+                    from = unit_system_from_type from
+                    to = unit_system_from_type to
+                rescue
+                    raise Measurements::Exception::NoUnitError, "The unit you're trying to convert to does not exist."
+                end
+                
+                from.eql? to
             end
 
             # Validate if a conversion will be valid. A conversion will be valid if one
