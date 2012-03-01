@@ -10,6 +10,9 @@ module Measurements
         # Measurement state for unit that can be either a fluid or solid measure
         NEUTRAL = "neutral"
         
+        # Measurement state for the unit that is not a cooking unit
+        BASE = "base"
+        
         # Helper method to get what types are available
         # @deprecated Use {Measurements#available_types} instead of this method because
         #   it's a more obvious method to use instead of diving down to the Type module.

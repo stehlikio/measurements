@@ -63,4 +63,31 @@ describe Measurements do
         cup = Measurements.new_unit :gallon, 2
         expect { cup.type = :solid }.should raise_error()
     end
+    
+    it "should convert 2 feet to 24 inches" do
+        feet = Measurements.new_unit :foot, 2
+        inches = feet.convert_to :inch
+        inches.quantity.should == 24
+    end
+    
+    it "should convert 30 inches to 1.5 feet" do
+        inches = Measurements.new_unit :inch, 30
+        feet = inches.convert_to :foot
+        feet.quantity.should == 2.5
+    end
+    
+    it "should raise an error if you try to convert a unit across system types" do
+        inches = Measurements.new_unit :inch, 55
+        expect { cup = inches.convert_to :cup }.should raise_error()
+    end
+    
+    it "should raise an error if you try to set a type manually for imperial units" do
+        expect { inch = Measurements.new_unit :inch, 51, :solid }.should raise_error()
+    end
+    
+    it "should convert 2.5 leagues to 475200 inches" do
+        leagues = Measurements.new_unit :league, 2.5
+        inches = leagues.convert_to :inch
+        inches.quantity.should == 475200
+    end
 end

@@ -12,6 +12,8 @@ module Measurements
         ABBREVIATIONS = YAML::load(File.open(File.join(File.dirname(__FILE__), 'config', 'abbreviations.yml')))
         
         autoload :BaseUnit,   'measurements/unit/baseunit'
+        
+        # Cooking Units
         autoload :Ounce,      'measurements/unit/ounce'
         autoload :Pound,      'measurements/unit/pound'
         autoload :Teaspoon,   'measurements/unit/teaspoon'
@@ -20,6 +22,16 @@ module Measurements
         autoload :Pint,       'measurements/unit/pint'
         autoload :Quart,      'measurements/unit/quart'
         autoload :Gallon,     'measurements/unit/gallon'
+        
+        # Imperial Units
+        autoload :Inch,       'measurements/unit/inch'
+        autoload :Foot,       'measurements/unit/foot'
+        autoload :Yard,       'measurements/unit/yard'
+        autoload :Furlong,    'measurements/unit/furlong'
+        autoload :Chain,      'measurements/unit/chain'
+        autoload :Mile,       'measurements/unit/mile'
+        autoload :Thou,       'measurements/unit/thou'
+        autoload :League,     'measurements/unit/league'
                 
         # Helper method to get what units are currently implemented
         # @deprecated Use {Measurements#available_units} instead of this method because
