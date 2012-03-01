@@ -11,12 +11,12 @@ describe Measurements do
 
     it "should create a 3 ounces object" do
         ounce = Measurements.create_unit :ounce, 3
-        ounce.class.should == Measurements::Unit::Ounce && ounce.quantity.should == 3
+        ounce.unit.should == "ounce" && ounce.quantity.should == 3
     end
 
     it "should create a 4 pound object" do
         pound = Measurements.new_unit :pound, 4
-        pound.class.should == Measurements::Unit::Pound && pound.quantity.should == 4
+        pound.unit.should == "pound" && pound.quantity.should == 4
     end
 
     it "should raise an error if the unit requested has not been implemented" do
