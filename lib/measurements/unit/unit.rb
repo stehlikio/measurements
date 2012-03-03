@@ -2,6 +2,7 @@ module Measurements
     module Unit
 
         class Unit
+
             def initialize(klass)
                 @klass = klass
             end
@@ -46,8 +47,14 @@ module Measurements
                 @klass.unit_abbr
             end
 
-            def convert_to(type)
+            def convert_to!(type)
                 @klass = @klass.convert_to(type)
+            end
+
+            def convert_to(type)
+                new_unit = self.dup
+                new_unit.convert_to!(type)
+                new_unit
             end
         end
 
