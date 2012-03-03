@@ -1,6 +1,8 @@
 module Measurements
     module Unit
 
+        # A wrapper for all of the units, this class was added to make the conversion of classes
+        #   keep the same object class instead of changing everytime you convert a unit.
         class Unit
 
             def initialize(klass)
@@ -51,6 +53,10 @@ module Measurements
                 @klass = @klass.convert_to(type)
             end
 
+            # The safe version of converting a unit. This method will duplicate the caller object and return the new
+            #   version of the object instead of the original caller
+            # @param [Symbol] type the unit to be converted to
+            # @return [Unit] the new Unit object
             def convert_to(type)
                 new_unit = self.dup
                 new_unit.convert_to!(type)
