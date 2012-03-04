@@ -20,7 +20,8 @@ module Measurements
     # @return [BaseUnit] a new unit instance of class = klass
     def new_unit(klass, quantity, type = nil)
         if available_units.include? klass
-            eval('Measurements::Unit::' + klass.to_s.capitalize).new quantity, type
+            unit = eval('Measurements::Unit::' + klass.to_s.capitalize).new quantity, type
+            Measurements::Unit::Unit.new(unit)
         else
             raise Measurements::Exception::NoUnitError, "The unit requested does not exist."
         end
