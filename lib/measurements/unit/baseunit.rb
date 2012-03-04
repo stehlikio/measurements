@@ -56,8 +56,11 @@ module Measurements
             # @attribute [r]
             # The abbreviation of the unit depending on the locale
             def unit_abbr
-                unit = self.class.name.split('::').last.downcase.to_s
-                Measurements::Unit::ABBREVIATIONS["abbreviations"][Measurements::LOCALE][unit]
+                if @quantity <= 1
+                    Measurements::Unit::ABBREVIATIONS["abbreviations"][Measurements::LOCALE]["singular"][self.unit]
+                else
+                    Measurements::Unit::ABBREVIATIONS["abbreviations"][Measurements::LOCALE]["plural"][self.unit]
+                end
             end
             
             # When you look at a unit object the quantity will be displayed.
@@ -73,11 +76,10 @@ module Measurements
             def convert_to(type)
                 type = type.to_s
                 
-                if validate_system(type)
-                
-                else
+                if !validate_system(type)
                     raise Measurements::Exception::InvalidConversionError, "A conversion must be from the same system type."
                 end
+                
                 if validate_conversion(type)
                     base = convert_to_base(self, type)
                     return convert_to_type(base, type)
