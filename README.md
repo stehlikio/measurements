@@ -11,17 +11,25 @@ $LOAD_PATH.unshift(File.dirname(__FILE__)+"/lib"); require 'measurements'
 
 You should also note that this only works if you launch irb from within the measurements directory.
 
+If you want to be snazy and grab this line to load without using a text editor you can run one of these commands
+
+##### Unix
+
+```shell
+cat README.md | grep "LOAD_PATH"
+```
+
+##### Windows
+
+```shell
+type README.md | find "LOAD_PATH"
+```
+
 ## Documentation
 Working on that son, and you're looking at it.
 
 ## Usage Examples
 Create an Ounce object with a quantity of 3oz
-
-```ruby
-ounce = Measurements::Unit::Ounce.new 3
-```
-
-**Notice:** You can now use the new helper method you create a unit instead of the way shown above
 
 ```ruby
 ounce = Measurements.new_unit :ounce, 3
@@ -33,23 +41,31 @@ Convert that 3oz object to a Pound object
 pound = ounce.convert_to :pound
 ```
 
+Convert the current unit by altering the unit itself
+
+```ruby
+ounce.convert_to! :pound
+```
+
 Create an Ounce object with a type of solid. This would be used to make sure when you convert
 using the smart convert (not yet implemented) the unit doesn't get converted to a fluid measurement
 
 ```ruby
-ounce = Measurements::Unit::Ounce.new 3, :solid
+ounce = Measurements.new_unit :ounce, 3.5, :solid
 ```
 	
 Get the list of available units
 
 ```ruby
 Measurements.available_units
+=> [:ounce, :pound, :teaspoon, :tablespoon, :cup, :pint, :quart, :gallon, :inch, :foot, :yard, :furlong, :chain, :mile, :thou, :league]
 ```
 	
 Get the list of available types of units. ex: Solid, Fluid or Neutral
 
 ```ruby
 Measurements.available_types
+=> [:solid, :fluid, :neutral, :base] 
 ```
 	
 ## Getting Started with Development

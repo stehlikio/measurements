@@ -11,12 +11,12 @@ describe Measurements do
 
     it "should create a 3 ounces object" do
         ounce = Measurements.create_unit :ounce, 3
-        ounce.class.should == Measurements::Unit::Ounce && ounce.quantity.should == 3
+        ounce.unit.should == "ounce" && ounce.quantity.should == 3
     end
 
     it "should create a 4 pound object" do
         pound = Measurements.new_unit :pound, 4
-        pound.class.should == Measurements::Unit::Pound && pound.quantity.should == 4
+        pound.unit.should == "pound" && pound.quantity.should == 4
     end
 
     it "should raise an error if the unit requested has not been implemented" do
@@ -62,5 +62,40 @@ describe Measurements do
     it "should raise an error when trying to set the unit type of a unit on the fly" do
         cup = Measurements.new_unit :gallon, 2
         expect { cup.type = :solid }.should raise_error()
+    end
+    
+    it "should convert 2 feet to 24 inches" do
+        feet = Measurements.new_unit :foot, 2
+        inches = feet.convert_to :inch
+        inches.quantity.should == 24
+    end
+    
+    it "should convert 30 inches to 1.5 feet" do
+        inches = Measurements.new_unit :inch, 30
+        feet = inches.convert_to :foot
+        feet.quantity.should == 2.5
+    end
+    
+    it "should raise an error if you try to convert a unit across system types" do
+        inches = Measurements.new_unit :inch, 55
+        expect { cup = inches.convert_to :cup }.should raise_error()
+    end
+    
+    it "should raise an error if you try to set a type manually for imperial units" do
+        expect { inch = Measurements.new_unit :inch, 51, :solid }.should raise_error()
+    end
+    
+    it "should convert 2.5 leagues to 475200 inches" do
+        leagues = Measurements.new_unit :league, 2.5
+        inches = leagues.convert_to :inch
+        inches.quantity.should == 475200
+    end
+    
+    it "should humanize 3.5 ounces to 3.5 oz" do
+        Measurements.new_unit(:ounce, 3.5).humanize.should == "3.5 oz"
+    end
+    
+    it "should humanize 4 pounds to 4 lbs" do
+        Measurements.new_unit(:pound, 4).humanize.should == "4.0 lbs"
     end
 end

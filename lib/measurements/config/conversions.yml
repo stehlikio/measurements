@@ -4,20 +4,28 @@ conversions:
       base: pound
       cup: 2
       ounce: 16
-      teaspoon: 96
       tablespoon: 32
-    
+      teaspoon: 96
     fluid:
       base: gallon
-      ounce: 128
-      cup: 16
-      pint: 8
       quart: 4
-      teaspoon: 10
-      tablespoon: 10
-      
+      pint: 8
+      cup: 16
+      ounce: 128
+      tablespoon: 256
+      teaspoon: 768
     neutral:
       base: cup
       ounce: 8
-      teaspoon: 48
       tablespoon: 16
+      teaspoon: 48
+  imperial:
+    base:
+      base: league
+      mile: 3
+      furlong: 24 
+      chain: 240
+      yard: 5280
+      foot: 15840
+      inch: 190080
+      thou: 190080000
