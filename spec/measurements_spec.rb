@@ -90,4 +90,12 @@ describe Measurements do
         inches = leagues.convert_to :inch
         inches.quantity.should == 475200
     end
+    
+    it "should humanize 3.5 ounces to 3.5 oz" do
+        Measurements.new_unit(:ounce, 3.5).humanize.should == "3.5 oz"
+    end
+    
+    it "should humanize 4 pounds to 4 lbs" do
+        Measurements.new_unit(:pound, 4).humanize.should == "4.0 lbs"
+    end
 end
