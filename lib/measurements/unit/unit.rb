@@ -31,12 +31,14 @@ module Measurements
                 @klass.type
             end
 
-            # @see Measurements::Unit::BaseUnit#inspect
+            # Get the quantity of the unit
+            # @return [Float] the quantitiy of the unit
             def quantity
                 @klass.quantity
             end
 
-            # @see Measurements::Unit::BaseUnit#inspect
+            # Set the quantity of a unit
+            # @param [Float] quanity the quantity of the unit
             def quantity=(quantity)
                 @klass.quantity = quantity
             end
