@@ -12,6 +12,7 @@ module Measurements
         ABBREVIATIONS = YAML::load(File.open(File.join(File.dirname(__FILE__), 'config', 'abbreviations.yml')))
         
         autoload :BaseUnit,   'measurements/unit/baseunit'
+        autoload :Unit,       'measurements/unit/unit'
         
         # Cooking Units
         autoload :Ounce,      'measurements/unit/ounce'
@@ -39,6 +40,7 @@ module Measurements
         # @return [Array] an Array of currently implemented units
         def available_units
             self.constants.reject{|unit| unit.eql?(:BaseUnit) || 
+                                         unit.eql?(:Unit) ||
                                          unit.eql?(:CONVERSIONS) || 
                                          unit.eql?(:ABBREVIATIONS)}.map{|unit| unit.to_s.downcase.to_sym}
         end

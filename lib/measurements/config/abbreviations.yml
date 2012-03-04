@@ -1,17 +1,34 @@
 abbreviations:
   en:
-    pound: lb
-    cup: c
-    ounce: oz
-    tablespoon: tbsp
-    teaspoon: tsp
-    quart: qt
-    pint: pt
-    gallon: gal
-    inch: in
-    foot: ft
-    mile: mi
-    furlong: fur
-    thou: th
-    chain: ch
-    league: lea
+    singular:
+      pound: lb
+      cup: c
+      ounce: oz
+      tablespoon: tbsp
+      teaspoon: tsp
+      quart: qt
+      pint: pt
+      gallon: gal
+      inch: in
+      foot: ft
+      mile: mi
+      furlong: fur
+      thou: th
+      chain: ch
+      league: lea
+    plural:
+      pound: lbs
+      cup: c
+      ounce: oz
+      tablespoon: tbsp
+      teaspoon: tsp
+      quart: qt
+      pint: pt
+      gallon: gal
+      inch: in
+      foot: ft
+      mile: mi
+      furlong: fur
+      thou: th
+      chain: ch
+      league: lea
