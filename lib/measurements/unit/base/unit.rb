@@ -71,12 +71,39 @@ module Measurements
             end
 
             # The safe version of converting a unit. This method will duplicate the caller object and return the new
-            #   version of the object instead of the original caller
+            #   version of the object instead of the original caller.
             # @param [Symbol] type the unit to be converted to
             # @return [Unit] the new Unit object
+            # @see Measurements::Unit::BaseUnit#convert_to
             def convert_to(type)
                 new_unit = self.dup
                 new_unit.convert_to!(type)
+                new_unit
+            end
+            
+            # This method will call the current units smart_convert method. This is the dangerous version and
+            #   it will change the callers unit. This method is only available if the unit is within the cooking
+            #   system.
+            # @param [Float] threshold this is used to set what step of unit conversion is acceptable, ie thirds or fourths
+            # @raise [NoMethodError] gets raised if the unit is not part of the cooking system.
+            # @see Measurements::Unit::CookingUnit#smart_convert
+            def smart_convert!(threshold = 0.25)
+                if @klass.unit_system == "cooking"
+                    @klass = @klass.smart_convert(threshold)
+                else
+                    raise NoMethodError, "Unit is not in the cooking system"
+                end
+            end
+            
+            # The safe version of smart converting a unit. This method will duplicate the caller object and return the new
+            #   version of the object instead of the original caller.
+            # @param [Float] threshold this is used to set what step of unit conversion is acceptable, ie thirds or fourths
+            # @raise [NoMethodError] gets raised if the unit is not part of the cooking system.
+            # @return [Unit] the new Unit object
+            # @see Measurements::Unit::CookingUnit#smart_convert
+            def smart_convert(threshold = 0.25)
+                new_unit = self.dup
+                new_unit.smart_convert(threshold)
                 new_unit
             end
         end
