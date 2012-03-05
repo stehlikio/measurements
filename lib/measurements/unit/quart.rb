@@ -6,10 +6,10 @@ module Measurements
         class Quart
             include BaseUnit
             
-            # Type for the Cup unit
+            # Type for the Quart unit
             UNIT_TYPE = Measurements::Type::FLUID
             
-            # System type for the Cup unit
+            # System type for the Quart unit
             UNIT_SYSTEM = Measurements::System::COOK
         end
         
