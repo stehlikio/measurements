@@ -5,6 +5,7 @@ module Measurements
         #   system.
         class Ounce
             include BaseUnit
+            include Cooking
             
             # Type for the Ounce unit
             UNIT_TYPE = Measurements::Type::NEUTRAL

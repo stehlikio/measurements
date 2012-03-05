@@ -88,15 +88,7 @@ module Measurements
                 end
             end
             
-            # Convert the current unit into a new unit of highest bestfit unit that
-            #   would make sense while measuring something. An example would be that a better way
-            #   to display 6 tsps would be 2 tbsps.
-            # @return [BaseUnit] the new unit, it will be the unit that is the bestfit conversion.
-            def smart_convert
-                #TODO
-            end
-            
-            private
+            protected
             
             # Get the unit type of the class passed in as a string
             # @param [String] type the class name as a string
@@ -151,18 +143,22 @@ module Measurements
             # Convert the current unit into the base unit for its type.
             # @param [BaseUnit] current the unit to be converted, it should be a subclass of [BaseUnit]
             # @return [BaseUnit] the base unit.
-            def convert_to_base(current, type)
-                unit_type = unit_type_from_type type
+            def convert_to_base(current, type = nil)
+                if !type.nil?
+                    unit_type = unit_type_from_type type
                 
-                if !unit_type.eql? "neutral"
-                    measurement_list = Measurements::Unit::CONVERSIONS["conversions"][current.unit_system][unit_type]
+                    if !unit_type.eql? "neutral"
+                        measurement_list = Measurements::Unit::CONVERSIONS["conversions"][current.unit_system][unit_type]
+                    else
+                        measurement_list = Measurements::Unit::CONVERSIONS["conversions"][current.unit_system][current.unit_type]
+                    end
                 else
                     measurement_list = Measurements::Unit::CONVERSIONS["conversions"][current.unit_system][current.unit_type]
                 end
                 
                 quantity_to_mst = measurement_list[current.unit].to_f != 0.0 ? measurement_list[current.unit] : 1.0
                 base_type = measurement_list["base"]
-
+                
                 eval("Measurements::Unit::" + base_type.capitalize).new(current.quantity / quantity_to_mst, current.type)
             end
             
@@ -180,6 +176,17 @@ module Measurements
                     
                     eval("Measurements::Unit::" + type.capitalize).new(base.quantity * quantity_to_type, base.type)
                 end
+            end
+            
+            def conversion_progression
+                if self.type == nil
+                    measurement_list = Measurements::Unit::CONVERSIONS["conversions"][self.unit_system][self.unit_type].dup
+                else
+                    measurement_list = Measurements::Unit::CONVERSIONS["conversions"][self.unit_system][self.type].dup
+                end
+                
+                measurement_list.delete("base")
+                measurement_list.sort{|x, y| x.last <=> y.last}.map{|x| x.first}
             end
         end
     end

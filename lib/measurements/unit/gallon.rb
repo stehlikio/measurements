@@ -5,6 +5,7 @@ module Measurements
         #   system.
         class Gallon
             include BaseUnit
+            include Cooking
             
             # Type for the Gallon unit
             UNIT_TYPE = Measurements::Type::FLUID

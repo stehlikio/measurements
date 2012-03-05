@@ -5,7 +5,8 @@ module Measurements
         #   system.
         class Teaspoon
             include BaseUnit
-            
+            include Cooking
+                        
             # Type for the Teaspoon unit
             UNIT_TYPE = Measurements::Type::NEUTRAL
             

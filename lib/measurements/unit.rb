@@ -14,6 +14,9 @@ module Measurements
         autoload :BaseUnit,   'measurements/unit/baseunit'
         autoload :Unit,       'measurements/unit/unit'
         
+        # Cooking Helper
+        autoload :Cooking,    'measurements/unit/cooking/cooking'
+        
         # Cooking Units
         autoload :Ounce,      'measurements/unit/ounce'
         autoload :Pound,      'measurements/unit/pound'
@@ -41,6 +44,7 @@ module Measurements
         def available_units
             self.constants.reject{|unit| unit.eql?(:BaseUnit) || 
                                          unit.eql?(:Unit) ||
+                                         unit.eql?(:Cooking) ||
                                          unit.eql?(:CONVERSIONS) || 
                                          unit.eql?(:ABBREVIATIONS)}.map{|unit| unit.to_s.downcase.to_sym}
         end

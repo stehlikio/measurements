@@ -5,6 +5,7 @@ module Measurements
         #   system.
         class Cup
             include BaseUnit
+            include Cooking
             
             # Type for the Cup unit
             UNIT_TYPE = Measurements::Type::NEUTRAL

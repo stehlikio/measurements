@@ -5,6 +5,7 @@ module Measurements
         #   system.
         class Pound
             include BaseUnit
+            include Cooking
                         
             # Type for the Pound unit
             UNIT_TYPE = Measurements::Type::SOLID

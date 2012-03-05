@@ -5,6 +5,7 @@ module Measurements
         #   system.
         class Quart
             include BaseUnit
+            include Cooking
             
             # Type for the Quart unit
             UNIT_TYPE = Measurements::Type::FLUID
