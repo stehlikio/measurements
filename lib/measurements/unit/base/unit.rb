@@ -98,12 +98,11 @@ module Measurements
             # The safe version of smart converting a unit. This method will duplicate the caller object and return the new
             #   version of the object instead of the original caller.
             # @param [Float] threshold this is used to set what step of unit conversion is acceptable, ie thirds or fourths
-            # @raise [NoMethodError] gets raised if the unit is not part of the cooking system.
             # @return [Unit] the new Unit object
             # @see Measurements::Unit::CookingUnit#smart_convert
             def smart_convert(threshold = 0.25)
                 new_unit = self.dup
-                new_unit.smart_convert(threshold)
+                new_unit.smart_convert!(threshold)
                 new_unit
             end
         end
