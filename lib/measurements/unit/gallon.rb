@@ -6,10 +6,10 @@ module Measurements
         class Gallon
             include BaseUnit
             
-            # Type for the Cup unit
+            # Type for the Gallon unit
             UNIT_TYPE = Measurements::Type::FLUID
             
-            # System type for the Cup unit
+            # System type for the Gallon unit
             UNIT_SYSTEM = Measurements::System::COOK
         end
         

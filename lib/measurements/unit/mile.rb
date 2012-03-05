@@ -6,10 +6,10 @@ module Measurements
         class Mile
             include BaseUnit
             
-            # Type for the Cup unit
+            # Type for the Mile unit
             UNIT_TYPE = Measurements::Type::BASE
             
-            # System type for the Cup unit
+            # System type for the Mile unit
             UNIT_SYSTEM = Measurements::System::IMPERIAL
         end
         

@@ -6,10 +6,10 @@ module Measurements
         class Chain
             include BaseUnit
             
-            # Type for the Cup unit
+            # Type for the Chain unit
             UNIT_TYPE = Measurements::Type::BASE
             
-            # System type for the Cup unit
+            # System type for the Chain unit
             UNIT_SYSTEM = Measurements::System::IMPERIAL
         end
         
