@@ -6,10 +6,10 @@ module Measurements
         class Inch
             include BaseUnit
             
-            # Type for the Cup unit
+            # Type for the Inch unit
             UNIT_TYPE = Measurements::Type::BASE
             
-            # System type for the Cup unit
+            # System type for the Inch unit
             UNIT_SYSTEM = Measurements::System::IMPERIAL
         end
         
