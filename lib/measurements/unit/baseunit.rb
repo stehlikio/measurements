@@ -178,6 +178,10 @@ module Measurements
                 end
             end
             
+            # The conversion_progression is an array of units within the unit system and type
+            #   sorted by size. This gives you a nice progression of what unit is larger or smaller
+            #   than the current unit
+            # @return [Array] the unit progression
             def conversion_progression
                 if self.type == nil
                     measurement_list = Measurements::Unit::CONVERSIONS["conversions"][self.unit_system][self.unit_type].dup

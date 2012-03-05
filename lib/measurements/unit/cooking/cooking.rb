@@ -6,6 +6,8 @@ module Measurements
             #   would make sense while measuring something. An example would be that a better way
             #   to display 6 tsps would be 2 tbsps.
             # @param [Float] threshold the amount of a partial unit that is satisfactory to return
+            # @param [String] unit the string representation of the unit to start from, it's mainly
+            #   used in the recursion. You could use it to limit the amount of units searched though.
             # @return [BaseUnit] the new unit, it will be the unit that is the bestfit conversion.
             def smart_convert(threshold = 0.25, unit = nil)
                 prog_list = conversion_progression
