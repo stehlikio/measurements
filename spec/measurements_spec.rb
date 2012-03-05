@@ -1,12 +1,16 @@
 require 'helper'
 
 describe Measurements do
-    it "should return the available system types" do
+    it "should return the available types that are implemented" do
         Measurements.available_types.should == Measurements::Type.available_types
     end
     
     it "should return the available units that are implemented" do
         Measurements.available_units.should == Measurements::Unit.available_units
+    end
+    
+    it "should return the available systems that are implemented" do
+        Measurements.available_systems.should == Measurements::System.available_systems
     end
 
     it "should create a 3 ounces object" do
@@ -90,7 +94,7 @@ describe Measurements do
         inches = leagues.convert_to :inch
         inches.quantity.should == 475200
     end
-    
+
     it "should humanize 3.5 ounces to 3.5 oz" do
         Measurements.new_unit(:ounce, 3.5).humanize.should == "3.5 oz"
     end
@@ -98,4 +102,5 @@ describe Measurements do
     it "should humanize 4 pounds to 4 lbs" do
         Measurements.new_unit(:pound, 4).humanize.should == "4.0 lbs"
     end
+
 end
