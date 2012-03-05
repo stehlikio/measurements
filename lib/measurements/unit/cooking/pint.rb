@@ -5,7 +5,7 @@ module Measurements
         #   system.
         class Pint
             include BaseUnit
-            include Cooking
+            include CookingUnit
                         
             # Type for the Pint unit
             UNIT_TYPE = Measurements::Type::FLUID

@@ -11,21 +11,21 @@ module Measurements
         #   The abbreviations.yml file lives in the /measurements/config directory of the project
         ABBREVIATIONS = YAML::load(File.open(File.join(File.dirname(__FILE__), 'config', 'abbreviations.yml')))
         
-        autoload :BaseUnit,   'measurements/unit/baseunit'
-        autoload :Unit,       'measurements/unit/unit'
+        autoload :BaseUnit,   'measurements/unit/base/baseunit'
+        autoload :Unit,       'measurements/unit/base/unit'
         
         # Cooking Helper
-        autoload :Cooking,    'measurements/unit/cooking/cooking'
+        autoload :CookingUnit,'measurements/unit/cooking/cookingunit'
         
         # Cooking Units
-        autoload :Ounce,      'measurements/unit/ounce'
-        autoload :Pound,      'measurements/unit/pound'
-        autoload :Teaspoon,   'measurements/unit/teaspoon'
-        autoload :Tablespoon, 'measurements/unit/tablespoon'
-        autoload :Cup,        'measurements/unit/cup'
-        autoload :Pint,       'measurements/unit/pint'
-        autoload :Quart,      'measurements/unit/quart'
-        autoload :Gallon,     'measurements/unit/gallon'
+        autoload :Ounce,      'measurements/unit/cooking/ounce'
+        autoload :Pound,      'measurements/unit/cooking/pound'
+        autoload :Teaspoon,   'measurements/unit/cooking/teaspoon'
+        autoload :Tablespoon, 'measurements/unit/cooking/tablespoon'
+        autoload :Cup,        'measurements/unit/cooking/cup'
+        autoload :Pint,       'measurements/unit/cooking/pint'
+        autoload :Quart,      'measurements/unit/cooking/quart'
+        autoload :Gallon,     'measurements/unit/cooking/gallon'
         
         # Imperial Units
         autoload :Inch,       'measurements/unit/inch'
@@ -44,7 +44,7 @@ module Measurements
         def available_units
             self.constants.reject{|unit| unit.eql?(:BaseUnit) || 
                                          unit.eql?(:Unit) ||
-                                         unit.eql?(:Cooking) ||
+                                         unit.eql?(:CookingUnit) ||
                                          unit.eql?(:CONVERSIONS) || 
                                          unit.eql?(:ABBREVIATIONS)}.map{|unit| unit.to_s.downcase.to_sym}
         end
