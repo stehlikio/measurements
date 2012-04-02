@@ -2,7 +2,7 @@
 This gem was created to assist in converting cooking measurements when scaling up a recipe.
 I was having fun with it so I decided to go a little above and beyond.
 
-*Note:* This project ended up getting bigger than I had expected and now there are quite a few things that need fixing.
+**Note:** This project ended up getting bigger than I had expected and now there are quite a few things that need fixing.
 I should have had a plan from the beginning...
 
 ## Using the Gem
