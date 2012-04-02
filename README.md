@@ -2,31 +2,23 @@
 This gem was created to assist in converting cooking measurements when scaling up a recipe.
 I was having fun with it so I decided to go a little above and beyond.
 
+*Note:* This project ended up getting bigger than I had expected and now there are quite a few things that need fixing.
+I should have had a plan from the beginning...
+
 ## Using the Gem
-Right now when I've been testing the gem inside irb I've been running the ruby line.
 
-```ruby
-$LOAD_PATH.unshift(File.dirname(__FILE__)+"/lib"); require 'measurements'
-```
-
-You should also note that this only works if you launch irb from within the measurements directory.
-
-If you want to be snazy and grab this line to load without using a text editor you can run one of these commands
-
-##### Unix
+Install it with
 
 ```shell
-cat README.md | grep "LOAD_PATH"
+gem install measurements
 ```
 
-##### Windows
-
-```shell
-type README.md | find "LOAD_PATH"
-```
+and enjoy.
 
 ## Documentation
-Working on that son, and you're looking at it.
+```shell
+yardoc
+```
 
 ## Usage Examples
 Create an Ounce object with a quantity of 3oz
@@ -83,6 +75,28 @@ Generate some docs to browse while I work on getting some tests ready. After run
 browse to the doc directory and open the index.html file in your favorite browser.
 
 	yardoc
+
+Right now when I've been testing the gem inside irb I've been running the ruby line.
+
+```ruby
+$LOAD_PATH.unshift(File.dirname(__FILE__)+"/lib"); require 'measurements'
+```
+
+You should also note that this only works if you launch irb from within the measurements directory.
+
+If you want to be snazy and grab this line to load without using a text editor you can run one of these commands
+
+##### Unix
+
+```shell
+cat README.md | grep "LOAD_PATH"
+```
+
+##### Windows
+
+```shell
+type README.md | find "LOAD_PATH"
+```
 	
 ## Copyright
 Copyright (c) 2012 Casey Stehlik.
