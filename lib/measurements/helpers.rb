@@ -11,6 +11,12 @@ module Measurements
     def available_types
         Measurements::Type.available_types
     end
+    
+    # Helper method to get what systems are available
+    # @return [Array] an Array of systems that are available
+    def available_systems
+        Measurements::System.available_systems
+    end
 
     # Helper method to create a unit class without having to explicitly
     #   call {Measurements::Unit::BaseUnit#initialize}
@@ -30,6 +36,7 @@ module Measurements
     module_function :new_unit
     module_function :available_units
     module_function :available_types
+    module_function :available_systems
 
     class << self
         alias_method :create_unit, :new_unit
