@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Measurements : A measurement gem for ruby." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Measurements</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/StehlikC/measurements">View on GitHub</a>
+
+          <h1 id="project_title">Measurements</h1>
+          <h2 id="project_tagline">A measurement gem for ruby.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/StehlikC/measurements/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/StehlikC/measurements/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Measurements Ruby Gem</h1>
+
+<p>This gem was created to assist in converting cooking measurements when scaling up a recipe.
+I was having fun with it so I decided to go a little above and beyond.</p>
+
+<p><strong>Note:</strong> This project ended up getting bigger than I had expected and now there are quite a few things that need fixing.
+I should have had a plan from the beginning...</p>
+
+<h2>Using the Gem</h2>
+
+<p>Install it with</p>
+
+<pre lang="shell"><code>gem install measurements
+</code></pre>
+
+<p>and enjoy.</p>
+
+<h2>Documentation</h2>
+
+<pre lang="shell"><code>yardoc
+</code></pre>
+
+<h2>Usage Examples</h2>
+
+<p>Create an Ounce object with a quantity of 3oz</p>
+
+<div class="highlight">
+<pre><span class="n">ounce</span> <span class="o">=</span> <span class="no">Measurements</span><span class="o">.</span><span class="n">new_unit</span> <span class="ss">:ounce</span><span class="p">,</span> <span class="mi">3</span>
+</pre>
+</div>
+
+
+<p>Convert that 3oz object to a Pound object</p>
+
+<div class="highlight">
+<pre><span class="n">pound</span> <span class="o">=</span> <span class="n">ounce</span><span class="o">.</span><span class="n">convert_to</span> <span class="ss">:pound</span>
+</pre>
+</div>
+
+
+<p>Convert the current unit by altering the unit itself</p>
+
+<div class="highlight">
+<pre><span class="n">ounce</span><span class="o">.</span><span class="n">convert_to!</span> <span class="ss">:pound</span>
+</pre>
+</div>
+
+
+<p>Create an Ounce object with a type of solid. This would be used to make sure when you convert
+using the smart convert (not yet implemented) the unit doesn't get converted to a fluid measurement</p>
+
+<div class="highlight">
+<pre><span class="n">ounce</span> <span class="o">=</span> <span class="no">Measurements</span><span class="o">.</span><span class="n">new_unit</span> <span class="ss">:ounce</span><span class="p">,</span> <span class="mi">3</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="ss">:solid</span>
+</pre>
+</div>
+
+
+<p>Get the list of available units</p>
+
+<div class="highlight">
+<pre><span class="no">Measurements</span><span class="o">.</span><span class="n">available_units</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:ounce</span><span class="p">,</span> <span class="ss">:pound</span><span class="p">,</span> <span class="ss">:teaspoon</span><span class="p">,</span> <span class="ss">:tablespoon</span><span class="p">,</span> <span class="ss">:cup</span><span class="p">,</span> <span class="ss">:pint</span><span class="p">,</span> <span class="ss">:quart</span><span class="p">,</span> <span class="ss">:gallon</span><span class="p">,</span> <span class="ss">:inch</span><span class="p">,</span> <span class="ss">:foot</span><span class="p">,</span> <span class="ss">:yard</span><span class="p">,</span> <span class="ss">:furlong</span><span class="p">,</span> <span class="ss">:chain</span><span class="p">,</span> <span class="ss">:mile</span><span class="p">,</span> <span class="ss">:thou</span><span class="p">,</span> <span class="ss">:league</span><span class="o">]</span>
+</pre>
+</div>
+
+
+<p>Get the list of available types of units. ex: Solid, Fluid or Neutral</p>
+
+<div class="highlight">
+<pre><span class="no">Measurements</span><span class="o">.</span><span class="n">available_types</span>
+<span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:solid</span><span class="p">,</span> <span class="ss">:fluid</span><span class="p">,</span> <span class="ss">:neutral</span><span class="p">,</span> <span class="ss">:base</span><span class="o">]</span> 
+</pre>
+</div>
+
+
+<h2>Getting Started with Development</h2>
+
+<p>Make sure you have rubygems installed. You can find instructions at <a href="http://docs.rubygems.org/read/chapter/3">rubygems.org</a></p>
+
+<p>Have bundler installed on your system</p>
+
+<pre><code>gem install bundler
+</code></pre>
+
+<p>Run bundler to make sure you have all the right gems</p>
+
+<pre><code>bundle install
+</code></pre>
+
+<p>Generate some docs to browse while I work on getting some tests ready. After running the following command
+browse to the doc directory and open the index.html file in your favorite browser.</p>
+
+<pre><code>yardoc
+</code></pre>
+
+<p>Right now when I've been testing the gem inside irb I've been running the ruby line.</p>
+
+<div class="highlight">
+<pre><span class="vg">$LOAD_PATH</span><span class="o">.</span><span class="n">unshift</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span><span class="o">+</span><span class="s2">"/lib"</span><span class="p">);</span> <span class="nb">require</span> <span class="s1">'measurements'</span>
+</pre>
+</div>
+
+
+<p>You should also note that this only works if you launch irb from within the measurements directory.</p>
+
+<p>If you want to be snazy and grab this line to load without using a text editor you can run one of these commands</p>
+
+<h5>Unix</h5>
+
+<pre lang="shell"><code>cat README.md | grep "LOAD_PATH"
+</code></pre>
+
+<h5>Windows</h5>
+
+<pre lang="shell"><code>type README.md | find "LOAD_PATH"
+</code></pre>
+
+<h2>Copyright</h2>
+
+<p>Copyright (c) 2012 Casey Stehlik.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Measurements maintained by <a href="https://github.com/StehlikC">StehlikC</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
