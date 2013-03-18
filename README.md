@@ -1,4 +1,4 @@
-# Measurements Ruby Gem
+# Measurements Ruby Gem [![Gem Version](https://badge.fury.io/rb/measurements.png)](http://badge.fury.io/rb/measurements) [![Dependency Status](https://gemnasium.com/StehlikC/measurements.png)](https://gemnasium.com/StehlikC/measurements) [![Code Climate](https://codeclimate.com/github/StehlikC/measurements.png)](https://codeclimate.com/github/StehlikC/measurements)
 This gem was created to assist in converting cooking measurements when scaling up a recipe.
 I was having fun with it so I decided to go a little above and beyond.
 
